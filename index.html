@@ -1,20 +1,70 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
+    <meta charset="utf-8">
     <title>Psychic Game</title>
 </head>
 
 <body>
-    <h1>The Psychic Game</h1>
-    <br>
-    <h3>Guess what Letter i'm thinking of:</h3>
-    <br>
-    <h4>Wins:</h4>
-    <br>
-    <h4>Losses:</h4>
-    <br>
-    <h4>Guesses left:</h4>
-    <br>
-    <h4>Guesses you've made so far:</h4>
+
+    <div id="game">
+
+        <h1>The Psychic Game</h1>
+   
+        <h3>Guess what Letter i'm thinking of:</h3>
+  
+        <h4>Wins:</h4>
+
+        <h4>Losses:</h4>
+
+        <h4>Guesses left:</h4>
+
+        <h4>Guesses you've made so far:</h4>
+
+        </div>
+
+    <script>
+    var compChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "x"];
+    var wins = 0;
+    var losses = 0;
+    var numOfGuesses = 9;
+    var guessChoices = [];
+
+    document.onkeyup = function(event) {
+        var userGuess = event.key;
+        var compGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
+        var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "x"];
+
+        if (options.indexOf(userGuess) > -1) {
+            if (userGuess === compGuess) {
+                wins++;
+                numOfGuesses = 9;
+                guessChoices = [];
+            }
+            if (userGuess !== compGuess) {
+                numOfGuesses --;
+                guessChoices.push(userGuess);
+            }
+            if (numOfGuesses === 0){
+                numOfGuesses = 9;
+                losses ++;
+                guessChoices = [];
+            }
+        }
+
+        //var html =
+        //"<h1> The Psychic Game </h1>"
+        //"<h3> Guess what Letter i'm thinking of: </h3>"
+        //"<h4> Wins: </h4>"
+       // "<h4> Losses: </h4>"
+       // "<h4> Guesses left: </h4>"
+       // "<h4> Guesses you've made so far: </h4>"
+
+      //  document.querySelector('#game').innerHTML = html;
+  
+    };
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    </script>
+    
 </body>
 </html>
