@@ -11,60 +11,61 @@
 
         <h1>The Psychic Game</h1>
    
-        <h3>Guess what Letter i'm thinking of:</h3>
+        <h3>Guess what Letter the computer is thinking of</h3>
   
-        <h4>Wins:</h4>
+        <h4 id="wins-text">Wins:</h4>
 
-        <h4>Losses:</h4>
+        <h4 id="losses-text">Losses:</h4>
 
         <h4>Guesses left:</h4>
 
-        <h4>Guesses you've made so far:</h4>
+        <h4 id="userchoice-text">Guesses you've made so far:</h4>
 
         </div>
 
-    <script>
-    var compChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "x"];
-    var wins = 0;
-    var losses = 0;
-    var numOfGuesses = 9;
-    var guessChoices = [];
+    
+    
+<script type="text/javascript">
+    
+    
+ // Need to define the variables needed 
+ //A-Z
+ var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+ //computer guesses
+ var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+ //user guesses
+ var guessChoices = [];
+ //wins
+ var wins = 0;
+ //losses
+ var losses = 0;
+ //number of guesses left
+ var numOfGuesses = 9;
+ // This function is run whenever the user presses a key.
+ document.onkeyup = function(event) {
+ // Determines which key was pressed.
+ var userGuess = event.key;
+ var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+ }
+    
+// if and else statements
 
-    document.onkeyup = function(event) {
-        var userGuess = event.key;
-        var compGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
-        var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "x"];
+  if(userGuess === computerChoice){
+        wins++;
+    }else{
+        guesses--;
+    }
 
-        if (options.indexOf(userGuess) > -1) {
-            if (userGuess === compGuess) {
-                wins++;
-                numOfGuesses = 9;
-                guessChoices = [];
-            }
-            if (userGuess !== compGuess) {
-                numOfGuesses --;
-                guessChoices.push(userGuess);
-            }
-            if (numOfGuesses === 0){
-                numOfGuesses = 9;
-                losses ++;
-                guessChoices = [];
-            }
-        }
+    if(guesses === 0){
+        losses++
+    }
 
-        //var html =
-        //"<h1> The Psychic Game </h1>"
-        //"<h3> Guess what Letter i'm thinking of: </h3>"
-        //"<h4> Wins: </h4>"
-       // "<h4> Losses: </h4>"
-       // "<h4> Guesses left: </h4>"
-       // "<h4> Guesses you've made so far: </h4>"
-
-      //  document.querySelector('#game').innerHTML = html;
-  
+    userChoiceText.textContent = userGuess;
+    computerChoices.textContent = computerGuess;
     };
-    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    
     </script>
     
+
 </body>
 </html>
