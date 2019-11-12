@@ -41,13 +41,30 @@
  var losses = 0;
  //number of guesses left
  var numOfGuesses = 9;
+ //random letter 
+ var computerGuess = computerChoices[Math.floor( Math.random() * computerChoices.length )];
+
+//get random letter
+var randomLetter = function() {
+    var randomLetter = computerChoices[Math.floor( Math.random() * computerChoices.length )];
+    return randomLetter;
+}
+
+ //reset game
+ var resetGame = function(){
+     numOfGuesses = 9;
+     guessChoices = [];
+     randomLetter;
+ }
+
+
  // This function is run whenever the user presses a key.
  document.onkeyup = function(event) {
  // Determines which key was pressed.
  var userGuess = event.key;
- var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
  }
-    
+ 
+
 // if and else statements
 
   if(userGuess === computerChoice){
@@ -58,11 +75,20 @@
 
     if(guesses === 0){
         losses++
+        //create a function that resets - new random letter, clear the guesses so far, number of guesses needs to go back up to 9.
+
     }
 
     userChoiceText.textContent = userGuess;
     computerChoices.textContent = computerGuess;
     };
+
+    /* 
+        1) user selects a letter
+        2) if the letter the user selects equals the random letter then the wins goes up - or otherwise the number of guesses left goes down
+        3) if the number of guesses left hits 0, then the game is reset and the number of losses goes up
+        4) game being reset - a new random letter is chosen, the number of guesses left is reset to 9.
+     */
     
     </script>
     
